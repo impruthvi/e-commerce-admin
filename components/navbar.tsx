@@ -1,4 +1,5 @@
 import { UserButton } from "@clerk/nextjs";
+import MainNav from "@/components/main-nav";
 
 const NavBar = () => {
   return (
@@ -8,9 +9,7 @@ const NavBar = () => {
                 This will be a store switcher
             </div>
 
-            <div>
-                This will be a the routes
-            </div>
+            <MainNav className="mx-6"/>
 
             <div className="ml-auto flex items-center space-x-4">
                 <UserButton afterSignOutUrl="/" />
