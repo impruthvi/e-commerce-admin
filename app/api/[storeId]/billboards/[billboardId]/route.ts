@@ -7,9 +7,6 @@ export async function GET(
   { params }: { params: { storeId: string; billboardId: string } }
 ) {
   try {
-    const { userId } = auth();
-
-    if (!userId) return new NextResponse("Unauthenticated", { status: 401 });
     if (!params.storeId)
       new NextResponse("Store id is required", { status: 400 });
     if (!params.billboardId)
