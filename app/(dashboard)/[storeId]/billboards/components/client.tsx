@@ -6,8 +6,14 @@ import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
+import { BillboardColumn, columns } from "./columns";
+import { DataTable } from "@/components/ui/data-table";
 
-export const BillBoardClient = () => {
+interface BillBoardClientProps {
+  data: BillboardColumn[];
+}
+
+export const BillBoardClient: React.FC<BillBoardClientProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
 
@@ -16,7 +22,7 @@ export const BillBoardClient = () => {
       <div className="flex items-center justify-between">
         <Heading
           discrption="Manage billboard for your store"
-          title="Billboard (0)"
+          title={`Billboard (${data.length})`}
         />
 
         <Button
@@ -27,6 +33,7 @@ export const BillBoardClient = () => {
         </Button>
       </div>
       <Separator />
+      <DataTable columns={columns} data={data} />
     </>
   );
 };
