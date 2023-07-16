@@ -38,12 +38,12 @@ const formSchema = z.object({
 
 type CategoryFromValues = z.infer<typeof formSchema>;
 
-interface SettingFormProps {
+interface CategoryFormProps {
   initialData: Category | null;
   billboards: Billboard[];
 }
 
-const CategoryForm: React.FC<SettingFormProps> = ({
+const CategoryForm: React.FC<CategoryFormProps> = ({
   initialData,
   billboards,
 }) => {
