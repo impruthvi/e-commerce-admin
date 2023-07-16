@@ -23,8 +23,6 @@ import { Billboard } from "@prisma/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ApiAlert } from "@/components/ui/api-alert";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
@@ -32,7 +30,7 @@ const formSchema = z.object({
   imageUrl: z.string().min(1),
 });
 
-type SettingFromValues = z.infer<typeof formSchema>;
+type BillboardFromValues = z.infer<typeof formSchema>;
 
 interface BillboardFormProps {
   initialData: Billboard | null;
@@ -41,7 +39,6 @@ interface BillboardFormProps {
 const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -51,7 +48,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "Billboard updated" : "Billboard created.";
   const action = initialData ? "Save changes" : "Create";
 
-  const form = useForm<SettingFromValues>({
+  const form = useForm<BillboardFromValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       label: "",
@@ -59,7 +56,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
     },
   });
 
-  const onSubmit = async (data: SettingFromValues) => {
+  const onSubmit = async (data: BillboardFromValues) => {
     try {
       setLoading(true);
       if (initialData) {
