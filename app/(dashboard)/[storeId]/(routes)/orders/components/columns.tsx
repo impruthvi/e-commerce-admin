@@ -7,8 +7,8 @@ export type OrderColumn = {
   phone: string;
   address: string;
   isPaid: boolean;
-  totalPice: string;
-  produts: string;
+  totalPrice: string;
+  products: string;
   createdAt: string;
 };
 

@@ -28,12 +28,12 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
       phone: order.phone,
       address: order.address,
       isPaid: order.isPaid,
-      totalPice: formatter.format(
+      totalPrice: formatter.format(
         order.orderItems.reduce((total, items) => {
           return total + Number(items.product.price);
         }, 0)
       ),
-      produts: order.orderItems.map((item) => item.product.name).join(", "),
+      products: order.orderItems.map((item) => item.product.name).join(", "),
       createdAt: format(order.createdAt, "MMMM do, yyyy"),
     };
   });
