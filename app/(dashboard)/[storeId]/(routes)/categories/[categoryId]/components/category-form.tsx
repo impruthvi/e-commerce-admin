@@ -71,7 +71,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
       setLoading(true);
       if (initialData) {
         await axios.patch(
-          `/api/${params.storeId}/categories/${params.billboardId}`,
+          `/api/${params.storeId}/categories`,
           data
         );
       } else {
